@@ -1,11 +1,11 @@
 const express = require('express');
 const path = require('path');
+const routes =  require('./routes/approute')
 
 const app = express();
-const port = 8080 || process.env.PORT
+const port = 8080 || process.env.PORT;
 
 app.set('view engine', 'ejs');
-console.log(__dirname);
 
 // static files added
 app.use('/assets', express.static(path.join(__dirname, '/assets')));
@@ -13,11 +13,8 @@ app.use('/blog/assets', express.static(path.join(__dirname, '/assets')));
 app.use('/blog/blog-single/assets', express.static(path.join(__dirname, '/assets')));
 app.use('/book/Appointment/assets', express.static(path.join(__dirname, '/assets')));
 
-
-
-
-
-// routes 
+// routes
+app.use('/data',routes);
 app.get('/', (req, res) => {
     res.render('index');
 });
