@@ -12,8 +12,21 @@ const config = {
 }
 sql.connect(config).catch(err => console.error(err));
 
-    router.route('/patients').get((req,res)=>{
-        sql.query('SELECT * FROM Patients').then(result => res.json(result))
-    })
+router.route('/Patients').get((req, res) => {
+    sql.query('SELECT * FROM Patients').then(result => res.json(result))
+});
+
+router.route('/Employees').get((req, res) => {
+    sql.query('SELECT * FROM Employees').then(result => res.json(result))
+});
+
+router.route('/Appointments').get((req, res) => {
+    sql.query('SELECT * FROM Appointments').then(result => res.json(result))
+});
+
+router.route('/Transaction_data').get((req, res) => {
+    sql.query('SELECT * FROM Transaction_data').then(result => res.json(result))
+});
+    
 
 module.exports = router
