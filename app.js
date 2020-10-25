@@ -2,12 +2,15 @@ const express = require('express');
 const path = require('path');
 const routes = require('./routes/approute');
 const cors = require('cors');
+const bodyParser = require('body-parser');
 
 const app = express();
 const port = 8080 || process.env.PORT;
 
 app.set('view engine', 'ejs');
 app.use(cors())
+app.use(bodyParser.urlencoded({extended:false}));
+app.use(bodyParser.json());
 
 // static files added
 app.use('/assets', express.static(path.join(__dirname, '/assets')));
